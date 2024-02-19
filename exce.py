@@ -1,4 +1,6 @@
 from Ks_multiprocessing import*
+import pandas as pd
+import sys
 
 #give full path to csv
 df_file = sys.argv[2]
