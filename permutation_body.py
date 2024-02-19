@@ -1,6 +1,7 @@
 from permutation_core import*
 import pandas as pd
 import numpy as np
+from math import comb
 
 def permutation_body(labels_unique, df_no_lab:pd.DataFrame, nsamp_array, prop_to_permut:float, 
     average_size_minus_4:int, dim:int, size_loop:int,
