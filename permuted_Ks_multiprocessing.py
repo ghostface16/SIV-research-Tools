@@ -11,7 +11,7 @@ from permutation_body import*
 from Ks_stat import*
 import sys
 
-def permuted_Ks_multiprocessing(df:pd.DataFrame, pairwise:bool, compute_random_Ks:bool, 
+def permuted_Ks_multiprocessing(df:pd.DataFrame, n_rep_par:int, pairwise:bool, compute_random_Ks:bool, 
                         size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1):
     
     Ks_stat_results = Ks_stat(df=df, size_Ki_samp=size_Ki_samp, compute_random_Ks=compute_random_Ks, pairwise=pairwise)
@@ -46,7 +46,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, pairwise:bool, compute_random_K
         #n_seqs_to_perm = round(average_size*prop_to_permut)#####!!!!!######!!!!!!!***** 
     
     # Introducing multiprocessing
-    n_rep_par = int(sys.argv[1])
+    #n_rep_par = int(sys.argv[1])
     n_ALs = len(labels_unique)
 
     with Pool(processes=n_rep_par) as pool:
