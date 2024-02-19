@@ -75,7 +75,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
                     where_lucky = np.where(lucky_unique_count[0]==ana_loc)
                     nproc = int(nproc + lucky_unique_count[1][where_lucky])
 
-            args = (labels_unique, df_no_lab, nsamp_array, 
+            args = (labels_unique, df_w_lab, nsamp_array, 
                     prop_to_permut, average_size_minus_4, dim, size_loop,
                     labels_unique_indx, random_labels, pairwise_ks_matrix, 
                     pKs_matrix, ana_loc, nproc, n_permut, pairwise, count_ana_locs_1, partition_2)      
