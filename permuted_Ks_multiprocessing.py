@@ -8,6 +8,7 @@ from multiprocessing import Pool
 import pandas as pd
 import numpy as np
 from permutation_body import*
+from Ks_multiprocessing import*
 
 def permuted_Ks_multiprocessing(df:pd.DataFrame, pairwise:bool, compute_random_Ks:bool, 
                         size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1):
