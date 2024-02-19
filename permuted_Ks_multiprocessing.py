@@ -46,7 +46,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
         #n_seqs_to_perm = round(average_size*prop_to_permut)#####!!!!!######!!!!!!!***** 
     
     # Introducing multiprocessing
-    #n_rep_par = int(sys.argv[1])
+    n_rep_par = nrep_par
     n_ALs = len(labels_unique)
 
     with Pool(processes=n_rep_par) as pool:
