@@ -10,7 +10,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
     count_ana_locs_1, partition_2):
 
     df_no_lab = df_w_lab.drop(index = 'Labels')
-    animal = df_w_lab.columns.split('.')[0]
+    animal = df_w_lab.columns[0].split('.')[0]
     nsamp_keys = list(nsamp_array.keys())
     labels_row = df_w_lab.iloc[-1,:]
     print(labels_unique)
