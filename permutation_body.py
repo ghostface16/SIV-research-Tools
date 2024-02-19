@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from math import comb
 
-def permutation_body(labels_unique, df_no_lab:pd.DataFrame, nsamp_array, prop_to_permut:float, 
+def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_permut:float, 
     average_size_minus_4:int, dim:int, size_loop:int,
     labels_unique_indx, random_labels, pairwise_ks_matrix:np.array, 
     pKs_matrix:np.array, ana_loc:str, nproc:int, n_permut:int, pairwise:bool,
