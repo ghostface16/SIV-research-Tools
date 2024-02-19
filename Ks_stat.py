@@ -1,3 +1,7 @@
+from math import floor, log
+import pandas as pd
+import numpy as np
+
 def Ks_stat(df:pd.DataFrame, pairwise:bool, size_Ki_samp=100, compute_random_Ks=True):
 
     df_cols = df.columns
