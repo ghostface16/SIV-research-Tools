@@ -43,9 +43,10 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
             w1 = float(nsamp_minus_2/(nsamp+average_size_minus_4))
             w2 = float(1-w1)
         
-        result = permutation_core(n_permut, pairwise, labels_unique_indx, random_labels,
-            df_no_lab, n_seqs_to_perm, ref_df_cols, nproc, count_ana_locs_1, w1, w2, 
-            partition, partition_2)
+        result = permutation_core(n_permut=n_permut, pairwise=pairwise, labels_unique_indx=labels_unique_indx, 
+                                  random_labels=random_labels, df_no_lab=df_no_lab, n_seqs_to_perm=n_seqs_to_perm, 
+                                  ref_df_cols=ref_df_cols, nproc=nproc, count_ana_locs_1=count_ana_locs_1, w1=w1, w2=w2, 
+                                  partition=partition, partition_2=partition_2)
 
     if compute_random_Ks:
         pKs_matrix = result[0]
