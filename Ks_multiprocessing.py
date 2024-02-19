@@ -6,8 +6,8 @@ from permuted_Ks_multiprocessing import*
        
 ################################# pKs permutation statistic  ##############################################################################
 
-def run_Kstar_perm(df:pd.DataFrame, pairwise:bool, compute_random_Ks:bool, 
-                        size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.2, nrep_par:int):
+def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, 
+                        size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.2):
 
     results = permuted_Ks_multiprocessing(df=df, pairwise=pairwise, compute_random_Ks=compute_random_Ks, 
                         size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, nrep_par=nrep_par)
