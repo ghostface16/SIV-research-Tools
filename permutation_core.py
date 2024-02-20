@@ -58,7 +58,8 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
     if pairwise:
         return((pairwise_ks_matrix[count_ana_locs_1-1, count_ana_locs,:],))
     else:
-        pKs_matrix[ana_loc] = pKs_array
+        #pKs_matrix =
+        pKs_matrix = pd.DataFrame(pKs_array, columns=[ana_loc])
         return ((pKs_matrix[ana_loc],))
 
 
