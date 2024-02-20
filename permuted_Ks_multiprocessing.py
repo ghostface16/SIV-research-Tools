@@ -50,7 +50,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
     n_rep_par = nrep_par
     n_ALs = len(labels_unique)
 
-    with Pool(processes=n_rep_par) as pool:
+    with Pool(max_workers=n_rep_par) as pool:
         permutation_body_args = []
 
         if n_rep_par==n_ALs:
