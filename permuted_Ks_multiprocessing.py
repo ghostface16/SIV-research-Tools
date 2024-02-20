@@ -65,7 +65,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
                 lucky_unique_count = None
             else:
                 floored_ratio = floor(ratio)
-                left = n_ALs-(floored_ration*n_ALs)
+                left = n_ALs-(floored_ratio*n_ALs)
                 prob = [1/n_ALs]*n_ALs
                 lucky = np.random.choice(a=labels_unique, p=prob, size=left, replace=True)
                 lucky_unique_count = np.unique(lucky, return_counts=True)
