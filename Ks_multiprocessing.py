@@ -23,8 +23,8 @@ def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random
         ks_path = os.path.join(csv_path, ks_name)
         pks_name = ident + '_pKs'
         pks_path = os.path.join(csv_path, pks_name)
-        ks_df = results[0]
-        pks_df = results[2]
+        Ks_df = results[0]
+        pKs_df = results[2]
         pKs_df.to_csv(f'{pks_path}')
         Ks_df.to_csv(f'{ks_path}')
 
