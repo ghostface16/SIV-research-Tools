@@ -7,7 +7,7 @@ df_file = sys.argv[2]
 df = pd.read_csv(df_file, index_col=0)
 nrep_par = int(sys.argv[1])
 
-if len(sys.argv)>=3:bool
+if len(sys.argv)>=3:
     csv_path = sys.argv[3]
 else:
     csv_path = None
