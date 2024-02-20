@@ -107,7 +107,8 @@ def Ks_stat(df:pd.DataFrame, pairwise:bool, size_Ki_samp=100, compute_random_Ks=
             pairwise_count+=1
     
     if compute_random_Ks:
-        return (K_array, nsamp_array, random_K_array, Ks_array, random_labels,
+        Ks_df = pd.DataFrame(Ks_array, columns=labels_unique)
+        return (K_array, nsamp_array, random_K_array, Ks_df, random_labels,
                 df_w_labels,(labels_unique, labels_count), average_size)
     elif pairwise:
         return (pairwise_ks_matrix, K_array, nsamp_array, (labels_unique, labels_count), 
