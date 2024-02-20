@@ -29,7 +29,7 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
         permutation_core_args = [permutted_ref_df, permutted_random_df]
 
         if nproc>1:
-            with Pool(processes=nproc) as pool_2:
+            with Pool(max_workers=nproc) as pool_2:
                 task = pool_2.starmap_async(Kaplan_distance, permutation_core_args)
                 task.close()    #Close Pool and let all the processes complete
                 task.join()
