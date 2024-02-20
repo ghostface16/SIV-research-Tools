@@ -9,8 +9,6 @@ nrep_par = int(sys.argv[1])
 
 if len(sys.argv)>=3:
     csv_path = sys.argv[3]
-else:
-    csv_path = None
 
 result = run_Kstar_perm(df, nrep_par=nrep_par, pairwise=False, compute_random_Ks=True, csv_dump=True,
-                        size_Ki_samp=1000,  n_permut=1000, prop_to_permut=0.2, csv_path=csv_path)
+                        size_Ki_samp=1000,  n_permut=1000, prop_to_permut=0.2)
