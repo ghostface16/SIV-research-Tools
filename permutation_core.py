@@ -31,7 +31,8 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
         if nproc>1:
             with Pool(max_workers=nproc) as pool_2:
                 #task = pool_2.starmap_async(Kaplan_distance, permutation_core_args)
-                results = pool.map(Kaplan_distance, permutation_core_arg)
+                #results = pool.map(Kaplan_distance, permutation_core_arg)
+                results = [pool.submit(Kaplan_distance, arg) for arg in permutation_body_arg]
                 #task.close()    #Close Pool and let all the processes complete
                 #task.join()
                 #results = task.result() 
