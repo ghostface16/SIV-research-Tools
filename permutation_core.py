@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from multiprocessing import Pool
 
-def permutation_core(n_permut:int, pairwise:bool, labels_unique_indx, random_labels,
+def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.Dataframe, labels_unique_indx, random_labels,
                     df_no_lab:pd.DataFrame, n_seqs_to_perm:int, ref_df_cols, nproc:int,
                      count_ana_locs_1, w1:float, w2:float, partition, partition_2):
 
