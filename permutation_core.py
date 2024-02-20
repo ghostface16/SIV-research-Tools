@@ -33,12 +33,11 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
                 task.close()    #Close Pool and let all the processes complete
                 task.join()
                 results = task.get() 
-                previous = results[0][0]
-                previous_2 = results[1][0]
         else:
-          results[Kaplan_distance(df)for df in permutation_core_args:
-            
-
+          results = [Kaplan_distance(df) for df in permutation_core_args]
+        
+        previous = results[0][0]
+        previous_2 = results[1][0]
         pK = previous/partition
         rpK = previous_2/partition_2
         pKw = pK*w1
