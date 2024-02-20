@@ -2,16 +2,31 @@ from math import floor, log
 import pandas as pd
 import numpy as np
 from permuted_Ks_multiprocessing import*
+import os
 
        
 ################################# pKs permutation statistic  ##############################################################################
 
-def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, 
-                        size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.2):
+def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, csv_dump:bool,
+                        size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.2, csv_path=None):
 
     results = permuted_Ks_multiprocessing(df=df, pairwise=pairwise, compute_random_Ks=compute_random_Ks, 
-                        size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, nrep_par=nrep_par)
-    return(results[0])
+                        size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, 
+                        nrep_par=nrep_par)
+
+    if csv_dump:
+        if not csv_path:
+            csv_path = os.getcwd()
+
+        ident = result[-1]
+        ks_name = ident + '_Ks'
+        ks_path = os.path.join(csv_path, ks_name)
+        pks_name = ident + '_pKs'
+        pks_path = os.path.join(csv_path, pks_name)
+        results[2].to_csv(f'{pks_path}')
+        results[0].to_csv(f'{ks_path}')
+
+    return(results[0], results[2])
 
 ##########################################################################################################
 

@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 from permutation_body import*
 from Ks_stat import*
-import sys
+#import sys
 
 def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, compute_random_Ks:bool, 
                         size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1):
@@ -90,8 +90,8 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
         #pool.starmap_async(permutation_body, permutation_body_args)
         #pool.close()    #Close Pool and let all the processes complete
         #pool.join() 
-        print('final_results', final_results, sep='\n')
-        print('\n type of result', type(final_results), sep='\n')
+        #print('final_results', final_results, sep='\n')
+        #print('\n type of result', type(final_results), sep='\n')
         #final_results = results.result()    
         
      #STILL NEED TO WORKOUT THE PAIRWISE result       
@@ -100,7 +100,9 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
     if compute_random_Ks:
         #result_list = {i[1]:i[2] for i in final_results}
         pKs_matrix = pd.concat(final_results, axis=1)
+
         #pd.DataFrame(result_dict)
-        return(Ks_stat_results[2], Ks_stat_results[-2], pKs_matrix)
+        ident = final_results_1[0][0]
+        return(Ks_stat_results[2], Ks_stat_results[-2], pKs_matrix, ident)
     else:        
         return(Ks_stat_results[0], pKs_matrix)
