@@ -40,7 +40,7 @@ def compute_p_val(Ks_stat:pd.DataFrame, pKs_matrix:pd.DataFrame, signif_thresh=0
     alpha = signif_thresh/2
     one_minus_alpha = 1 - alpha
     trials = pKs_matrix.shape[0]
-    upper_limit_ks = float(Ks_stat.quantile(one_minus_alpha))
+    upper_limit_ks = float(Ks_stat.quantile(one_minus_alpha)[0])
     print(upper_limit_ks)
     
     for pks in pKs_matrix.columns:
