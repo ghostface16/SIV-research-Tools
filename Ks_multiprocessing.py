@@ -19,9 +19,9 @@ def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random
             csv_path = os.getcwd()
 
         ident = results[-1]
-        ks_name = ident + '_Ks'
+        ks_name = ident + '_Ks.csv'
         ks_path = os.path.join(csv_path, ks_name)
-        pks_name = ident + '_pKs'
+        pks_name = ident + '_pKs.csv'
         pks_path = os.path.join(csv_path, pks_name)
         Ks_df = results[0]
         pKs_df = results[2]
