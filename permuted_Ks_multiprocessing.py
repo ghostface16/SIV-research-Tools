@@ -100,9 +100,15 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
     if compute_random_Ks:
         #result_list = {i[1]:i[2] for i in final_results}
         pKs_matrix = pd.concat(final_results, axis=1)
-
         #pd.DataFrame(result_dict)
         ident = [result.result()[0] for result in final_results_1][0]
-        return(Ks_stat_results[2], Ks_stat_results[-2], pKs_matrix, ident)
+        labels_n_counts = Ks_stat_results[-2]
+        labels = labels_n_counts[0]
+        Ks_df = pd.DataFrame(Ks_stat_results[3], columns=labels)
+        return(Ks_df, labels_n_counts, pKs_matrix, ident)
+
     else:        
         return(Ks_stat_results[0], pKs_matrix)
+
+
+
