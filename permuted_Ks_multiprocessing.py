@@ -4,7 +4,8 @@
 
 ####################################################################################################################################################
 
-from multiprocessing import Pool
+#from multiprocessing import Pool
+from concurrent.futures import ProcessPoolExecutor as Pool
 import pandas as pd
 import numpy as np
 from permutation_body import*
