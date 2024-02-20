@@ -7,7 +7,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
     average_size_minus_4:int, dim:int, size_loop:int,
     labels_unique_indx, random_labels, pairwise_ks_matrix:np.array, 
     pKs_matrix:np.array, ana_loc:str, nproc:int, n_permut:int, pairwise:bool,
-    count_ana_locs_1, partition_2):
+    count_ana_locs_1, partition_2, compute_random_Ks):
 
     df_no_lab = df_w_lab.drop(index = 'Labels')
     animal = df_w_lab.columns[0].split('.')[0]
@@ -49,7 +49,8 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
                                   partition=partition, partition_2=partition_2)
 
     if compute_random_Ks:
-        pKs_matrix = result[0]
+        #pKs_matrix = result[0]
+        pKs_matrix = pd.DataFrame(result[0], columns=[ana_loc])
         return((animal, ana_loc, pKs_matrix))
     else:
         print('###WORK IT OUT')
