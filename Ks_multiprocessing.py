@@ -18,15 +18,17 @@ def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random
         if not csv_path:
             csv_path = os.getcwd()
 
-        ident = result[-1]
+        ident = results[-1]
         ks_name = ident + '_Ks'
         ks_path = os.path.join(csv_path, ks_name)
         pks_name = ident + '_pKs'
         pks_path = os.path.join(csv_path, pks_name)
-        results[2].to_csv(f'{pks_path}')
-        results[0].to_csv(f'{ks_path}')
+        ks_df = results[0]
+        pks_df = results[2]
+        pKs_df.to_csv(f'{pks_path}')
+        Ks_df.to_csv(f'{ks_path}')
 
-    return(results[0], results[2])
+    return(pKs_df, Ks_df)
 
 ##########################################################################################################
 
