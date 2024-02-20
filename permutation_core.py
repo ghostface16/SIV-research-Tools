@@ -1,7 +1,8 @@
 from Kaplan_distance import*
 import pandas as pd
 import numpy as np
-from multiprocessing import Pool
+#from multiprocessing import Pool
+from concurrent.futures import ProcessPoolExecutor as Pool
 
 def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_unique_indx, random_labels,
                     df_no_lab:pd.DataFrame, n_seqs_to_perm:int, ref_df_cols, nproc:int,
