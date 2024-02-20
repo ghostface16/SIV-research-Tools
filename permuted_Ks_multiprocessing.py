@@ -84,7 +84,8 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
             
             permutation_body_args.append(args)  
 
-        final_results = pool.map(permutation_body, permutation_body_args)#pool.starmap_async(permutation_body, permutation_body_args)
+        final_results = [pool.submit(permutation_body, arg) for arg in permutation_body_args]
+        #pool.starmap_async(permutation_body, permutation_body_args)
         #pool.close()    #Close Pool and let all the processes complete
         #pool.join() 
         print('final_results', final_results, sep='\n')
