@@ -37,11 +37,12 @@ def compute_p_val(Ks_stat:pd.DataFrame, pKs_matrix:pd.DataFrame, signif_thresh=0
     
     H = 0
     p_val_dict = {}
-    alpha = signif_thresh/2
+    alpha = signif_thresh#/2
     one_minus_alpha = 1 - alpha
     trials = pKs_matrix.shape[0]
-    upper_limit_ks = float(Ks_stat.quantile(one_minus_alpha)[0])
+    upper_limit_ks = Ks_stat.quantile(one_minus_alpha)
     print(upper_limit_ks)
+    count = 0
     
     for pks in pKs_matrix.columns:
         ana_loc = pKs_matrix[pks] 
@@ -49,10 +50,11 @@ def compute_p_val(Ks_stat:pd.DataFrame, pKs_matrix:pd.DataFrame, signif_thresh=0
         lower_limit_pks = ana_loc.quantile(alpha)
         to_check_1 = lower_limit_pks <= ana_loc 
         to_use_pks = ana_loc[to_check_1]
-        to_check = to_use_pks <= upper_limit_ks
+        to_check = to_use_pks <= upper_limit_ks[count]
         H = to_check.sum()
         p_val = H/trials
         p_val_dict[pks] = p_val
+        count+=1
     
     all_p_vals = list(p_val_dict.values())
     print(all_p_vals)
