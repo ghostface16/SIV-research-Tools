@@ -38,7 +38,7 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
                 #results = task.result() 
                 results = [result.result() for result in results_0]
         else:
-          results = [Kaplan_distance(df) for df in permutation_core_args]
+          results = [pKaplan_distance(df) for df in permutation_core_args]
         
         previous = results[0][0]
         previous_2 = results[1][0]

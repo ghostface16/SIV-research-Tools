@@ -2,7 +2,7 @@ from math import floor, log
 import pandas as pd
 import numpy as np
 
-def Kaplan_distance(compartment_df):
+def pKaplan_distance(compartment_df):
 
     count, previous = 0, 0
     compartment_df_cols = compartment_df.columns
@@ -14,8 +14,8 @@ def Kaplan_distance(compartment_df):
         if len_to_use_1>1:
             to_use_1 = to_use_1.iloc[:,0]
 
-        for seq_2 in permutted_ref_df_cols[count:]:
-            to_use_2 = permutted_ref_df[seq_2]
+        for seq_2 in compartment_df_cols[count:]:
+            to_use_2 = compartment_df[seq_2]
             len_to_use_2 = len(to_use_2.shape)
 
             if len_to_use_2>1:
