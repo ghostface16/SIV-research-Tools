@@ -84,12 +84,12 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
             
             permutation_body_args.append(args)  
 
-        results = pool.map(permutation_body, permutation_body_args)#pool.starmap_async(permutation_body, permutation_body_args)
+        final_results = pool.map(permutation_body, permutation_body_args)#pool.starmap_async(permutation_body, permutation_body_args)
         #pool.close()    #Close Pool and let all the processes complete
         #pool.join() 
-        print('results', results, sep='\n')
-        print('\n type of result', type(results), sep='\n')
-        final_results = results.result()    
+        print('final_results', final_results, sep='\n')
+        print('\n type of result', type(final_results), sep='\n')
+        #final_results = results.result()    
         
      #STILL NEED TO WORKOUT THE PAIRWISE result       
     if pairwise:
