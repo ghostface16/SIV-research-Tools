@@ -35,6 +35,9 @@ def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_un
                 results = task.get() 
                 previous = results[0][0]
                 previous_2 = results[1][0]
+        else:
+          results[Kaplan_distance(df)for df in permutation_core_args:
+            
 
         pK = previous/partition
         rpK = previous_2/partition_2
