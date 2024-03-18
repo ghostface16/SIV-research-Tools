@@ -2,26 +2,43 @@ from math import floor, log, comb
 import pandas as pd
 import numpy as np
 
-def Ks_stat(df:pd.DataFrame, pairwise:bool, size_Ki_samp=100, compute_random_Ks=True):
+def Ks_stat(df:pd.DataFrame, pairwise:bool, grouping_index:int, time_serie:bool, size_Ki_samp=100, compute_random_Ks=True,
+            time_serie_index=time_serie_index):
 
     df_cols = df.columns
-    labels_all = [x.split('.')[1] + '_' + x.split('.')[2] + '_' + x.split('.')[3] + '_' + x.split('.')[4] if len(x.split('.'))>5 else x.split('.')[1] + '_' + x.split('.')[2] + '_' + x.split('.')[3] if len(x.split('.'))>4 else x.split('.')[1] + '_' + x.split('.')[2] if len(x.split('.'))>3 else x.split('.')[1] if len(x.split('.'))>2 else x.split('.')[0] for x in df.columns]
+
+    # Very application specific, must be replaced by code that takes a row as an input an sort sequences by location or other kinds of label
+    # It should be performed by user and not implemented into code
+    #labels_all = [x.split('.')[1] + '_' + x.split('.')[2] + '_' + x.split('.')[3] + '_' + x.split('.')[4] if len(x.split('.'))>5 else x.split('.')[1] + '_' + x.split('.')[2] + '_' + x.split('.')[3] if len(x.split('.'))>4 else x.split('.')[1] + '_' + x.split('.')[2] if len(x.split('.'))>3 else x.split('.')[1] if len(x.split('.'))>2 else x.split('.')[0] for x in df.columns]
+    
+    labels_all = df.iloc[grouping_index, :]
+
     labels_unique_and_count = np.unique(labels_all, return_counts=True)
     labels_count = labels_unique_and_count[1]
     labels_unique = labels_unique_and_count[0]
+
+    #Should allow user to choose minimum number of seq per group for a group to be included in computations
     is_one = np.where(labels_count==1)[0]
+
+    # even more application specific
     is_22617 = np.where(labels_unique=='>22617')[0]
     
+    # This is fine we can keep it since we want to get rid of groups with less then X members
     if len(is_one)>0:
         labels_unique = np.delete(labels_unique, is_one)
         labels_count = np.delete(labels_count, is_one)
+
+    # Even more application specific should be taken out too, users will have to deal with there own dataset specific issues
     if len(is_22617)>0:
         labels_unique = np.delete(labels_unique, is_22617 )
         labels_count = np.delete(labels_count, is_22617 )
 
     labels_df = pd.DataFrame({'Labels':labels_all}, index=df_cols).transpose()
-    df_w_labels = pd.concat([df, labels_df], axis=0)
-    labels_row = df_w_labels.iloc[-1,:]
+    
+    # since we're letting user figuring out grouping before running the test, this line isn't needed anymore
+    #df_w_labels = pd.concat([df, labels_df], axis=0)
+    df_w_labels = df
+    labels_row = df_w_labels.iloc[grouping_index,:]
     K_array = {}#np.zeros(len(labels_unique))
     nsamp_array = {}
     df_no_lab = df_w_labels.drop(index='Labels')

@@ -13,9 +13,9 @@ from Ks_stat import*
 #import sys
 
 def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, compute_random_Ks:bool, 
-                        size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1):
+                                size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1, grouping_index:int):
     
-    Ks_stat_results = Ks_stat(df=df, size_Ki_samp=size_Ki_samp, compute_random_Ks=compute_random_Ks, pairwise=pairwise)
+    Ks_stat_results = Ks_stat(df=df, size_Ki_samp=size_Ki_samp, compute_random_Ks=compute_random_Ks, pairwise=pairwise, grouping_index=grouping_index)
     labels_unique = Ks_stat_results[-2][0]
     labels_unique_count = Ks_stat_results[-2][1]
 
@@ -88,12 +88,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
 
         final_results_1 = [pool.submit(permutation_body, *arg) for arg in permutation_body_args]
         final_results = [result.result()[2] for result in final_results_1]
-        #pool.starmap_async(permutation_body, permutation_body_args)
-        #pool.close()    #Close Pool and let all the processes complete
-        #pool.join() 
-        #print('final_results', final_results, sep='\n')
-        #print('\n type of result', type(final_results), sep='\n')
-        #final_results = results.result()    
+
         
      #STILL NEED TO WORKOUT THE PAIRWISE result       
     if pairwise:
