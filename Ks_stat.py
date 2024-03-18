@@ -37,6 +37,7 @@ def Ks_stat(df:pd.DataFrame, pairwise:bool, grouping_index:int, size_Ki_samp=100
     # since we're letting user figuring out grouping before running the test, this line isn't needed anymore
     #df_w_labels = pd.concat([df, labels_df], axis=0)
     df_w_labels = df
+    print(df_w_labels)
     labels_row = df_w_labels.iloc[grouping_index,:]
     K_array = {}#np.zeros(len(labels_unique))
     nsamp_array = {}
