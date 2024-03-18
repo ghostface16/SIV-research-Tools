@@ -40,7 +40,7 @@ def Ks_stat(df:pd.DataFrame, pairwise:bool, grouping_index:int, size_Ki_samp=100
     labels_row = df_w_labels.iloc[grouping_index,:]
     K_array = {}#np.zeros(len(labels_unique))
     nsamp_array = {}
-    df_no_lab = df_w_labels.drop(index='Labels')
+    df_no_lab = df_w_labels.drop([-1], axis=0)#index='Labels')
     random_labels = {}
     
     if compute_random_Ks:
