@@ -11,4 +11,4 @@ if len(sys.argv)>3:
     csv_path = sys.argv[3]
 
 result = run_Kstar_perm(df, nrep_par=nrep_par, pairwise=True, compute_random_Ks=True, csv_dump=True, time_serie=None,
-                        grouping_index= -2, size_Ki_samp=1000,  n_permut=1000, prop_to_permut=0.2)
+                        grouping_index= -1, size_Ki_samp=1000,  n_permut=1000, prop_to_permut=0.2)
