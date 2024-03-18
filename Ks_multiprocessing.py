@@ -8,11 +8,11 @@ from statsmodels.stats.multitest import fdrcorrection
 ################################# pKs permutation statistic  ##############################################################################
 
 def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, csv_dump:bool, grouping_index:int, 
-                   time_serie:bool, size_Ki_samp=100, n_permut=1000, prop_to_permut=0.2, csv_path=None, time_serie_index=None):
+                   size_Ki_samp=100, n_permut=1000, prop_to_permut=0.2, csv_path=None):
 
     results = permuted_Ks_multiprocessing(df=df, pairwise=pairwise, compute_random_Ks=compute_random_Ks, 
                         size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, 
-                        nrep_par=nrep_par, grouping_index=grouping_index, time_serie=time_serie, time_serie_index=time_serie_index)
+                        nrep_par=nrep_par, grouping_index=grouping_index)
 
     if csv_dump:
         if not csv_path:
