@@ -12,7 +12,7 @@ from permutation_body import*
 from Ks_stat import*
 #import sys
 
-def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, compute_random_Ks:bool, 
+def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, compute_random_Ks:bool, sep:str,
                                 grouping_index:int, size_Ki_samp=100,  n_permut=1000, prop_to_permut=0.1):
     
     Ks_stat_results = Ks_stat(df=df, size_Ki_samp=size_Ki_samp, compute_random_Ks=compute_random_Ks, pairwise=pairwise, 
@@ -80,7 +80,7 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
                     nproc = int(nproc + lucky_unique_count[1][where_lucky])
 
             args = (labels_unique, df_w_lab, nsamp_array, 
-                    prop_to_permut, average_size_minus_4, dim, size_loop,
+                    prop_to_permut, average_size_minus_4, dim, size_loop, sep,
                     labels_unique_indx, random_labels, pairwise_ks_matrix, 
                     pKs_matrix, ana_loc, nproc, n_permut, pairwise, count_ana_locs_1, 
                     partition_2, compute_random_Ks)      

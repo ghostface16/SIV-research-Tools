@@ -7,12 +7,13 @@ from statsmodels.stats.multitest import fdrcorrection
        
 ################################# pKs permutation statistic  ##############################################################################
 
-def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, csv_dump:bool, grouping_index:int, 
-                   size_Ki_samp=100, n_permut=1000, prop_to_permut=0.2, csv_path=None):
+def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, csv_dump:bool, 
+                    grouping_index:int, sep:str, size_Ki_samp=100, n_permut=1000, prop_to_permut=0.2, 
+                    csv_path=None):
 
     results = permuted_Ks_multiprocessing(df=df, pairwise=pairwise, compute_random_Ks=compute_random_Ks, 
                         size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, 
-                        nrep_par=nrep_par, grouping_index=grouping_index)
+                        nrep_par=nrep_par, grouping_index=grouping_index, sep=sep)
 
     if csv_dump:
         if not csv_path:
