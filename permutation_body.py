@@ -4,13 +4,13 @@ import numpy as np
 from math import comb
 
 def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_permut:float, 
-    average_size_minus_4:int, dim:int, size_loop:int,
+    average_size_minus_4:int, dim:int, size_loop:int, sep:str,
     labels_unique_indx, random_labels, pairwise_ks_matrix:np.array, 
     pKs_matrix:np.array, ana_loc:str, nproc:int, n_permut:int, pairwise:bool,
     count_ana_locs_1, partition_2, compute_random_Ks):
 
-    df_no_lab = df_w_lab.drop(index = 'Labels')
-    animal = df_w_lab.columns[0].split('.')[0]
+    df_no_lab = df_w_labels.drop(df_w_labels.index[-1], axis=0)# df_w_lab.drop(index = 'Labels') 
+    animal = df_w_lab.columns[0].split(sep)[0]
     nsamp_keys = list(nsamp_array.keys())
     labels_row = df_w_lab.iloc[-1,:]
     print(labels_unique)
