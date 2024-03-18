@@ -2,7 +2,7 @@ from math import floor, log, comb
 import pandas as pd
 import numpy as np
 
-def Ks_stat(df:pd.DataFrame, pairwise:bool, grouping_index:int, time_serie:bool, size_Ki_samp=100, compute_random_Ks=True):
+def Ks_stat(df:pd.DataFrame, pairwise:bool, grouping_index:int, size_Ki_samp=100, compute_random_Ks=True):
 
     df_cols = df.columns
 
