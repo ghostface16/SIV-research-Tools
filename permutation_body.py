@@ -9,7 +9,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
     pKs_matrix:np.array, ana_loc:str, nproc:int, n_permut:int, pairwise:bool,
     count_ana_locs_1, partition_2, compute_random_Ks):
 
-    df_no_lab = df_w_lab.drop(df_w_labels.index[-1], axis=0)# df_w_lab.drop(index = 'Labels') 
+    df_no_lab = df_w_lab.drop(df_w_lab.index[-1], axis=0)# df_w_lab.drop(index = 'Labels') 
     animal = df_w_lab.columns[0].split(sep)[0]
     nsamp_keys = list(nsamp_array.keys())
     labels_row = df_w_lab.iloc[-1,:]
