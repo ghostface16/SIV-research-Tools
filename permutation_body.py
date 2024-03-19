@@ -30,6 +30,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
         w2 = float(1-w1)
         rand_cols = None
         random_df = None
+        pairwise_ks_matrix = None
     else:
         count_ana_locs = dim - size_loop  #####!!!!!######!!!!!!!*****
 
@@ -49,7 +50,8 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
         result = permutation_core(n_permut=n_permut, pairwise=pairwise, ref_df=ref_df, labels_unique_indx=labels_unique_indx, 
                                   random_labels=random_labels, df_no_lab=df_no_lab, n_seqs_to_perm=n_seqs_to_perm, 
                                   ref_df_cols=ref_df_cols, nproc=nproc, count_ana_locs_1=count_ana_locs_1, w1=w1, w2=w2, 
-                                  partition=partition, partition_2=partition_2, rand_cols=rand_cols, random_df=random_df)
+                                  partition=partition, partition_2=partition_2, rand_cols=rand_cols, random_df=random_df, 
+                                  pairwise_ks_matrix=pairwise_ks_matrix)
 
     if compute_random_Ks:
         #pKs_matrix = result[0]

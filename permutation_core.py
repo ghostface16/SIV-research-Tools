@@ -6,7 +6,8 @@ from concurrent.futures import ProcessPoolExecutor as Pool
 
 def permutation_core(n_permut:int, pairwise:bool, ref_df:pd.DataFrame, labels_unique_indx, random_labels,
                      df_no_lab:pd.DataFrame, n_seqs_to_perm:int, ref_df_cols, nproc:int,
-                     count_ana_locs_1, w1:float, w2:float, partition, partition_2, rand_cols, random_df):
+                     count_ana_locs_1, w1:float, w2:float, partition, partition_2, rand_cols, random_df,
+                     pairwise_ks_matrix):
 
     if not pairwise:
         pKs_array = np.zeros((n_permut,))
