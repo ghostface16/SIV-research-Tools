@@ -31,6 +31,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
         rand_cols = None
         random_df = None
         pairwise_ks_matrix = None
+        count_ana_locs = None
     else:
         count_ana_locs = dim - size_loop  #####!!!!!######!!!!!!!*****
 
