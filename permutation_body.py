@@ -8,12 +8,13 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
     labels_unique_indx, random_labels, pairwise_ks_matrix:np.array, 
     pKs_matrix:np.array, ana_loc:str, nproc:int, n_permut:int, pairwise:bool,
     count_ana_locs_1, partition_2, compute_random_Ks):
-    print(df_w_lab)
+
+    #print(df_w_lab)
     df_no_lab = df_w_lab.drop(df_w_lab.index[-1], axis=0)# df_w_lab.drop(index = 'Labels') 
     animal = df_w_lab.columns[0].split(sep)[0]
     nsamp_keys = list(nsamp_array.keys())
     labels_row = df_w_lab.iloc[-1,:]
-    print(labels_unique)
+    #print(labels_unique)
 
     #for ana_loc in labels_unique:
     ref_df = df_no_lab.loc[:,labels_row==ana_loc]
@@ -27,6 +28,8 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
     if not pairwise:
         w1 = float(nsamp_minus_2/(nsamp+average_size_minus_4))
         w2 = float(1-w1)
+        rand_cols = None
+        random_df = None
     else:
         count_ana_locs = dim - size_loop  #####!!!!!######!!!!!!!*****
 
@@ -46,13 +49,15 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
         result = permutation_core(n_permut=n_permut, pairwise=pairwise, ref_df=ref_df, labels_unique_indx=labels_unique_indx, 
                                   random_labels=random_labels, df_no_lab=df_no_lab, n_seqs_to_perm=n_seqs_to_perm, 
                                   ref_df_cols=ref_df_cols, nproc=nproc, count_ana_locs_1=count_ana_locs_1, w1=w1, w2=w2, 
-                                  partition=partition, partition_2=partition_2)
+                                  partition=partition, partition_2=partition_2, rand_cols=rand_cols, random_df=random_df)
 
     if compute_random_Ks:
         #pKs_matrix = result[0]
         pKs_matrix = pd.DataFrame(result[0], columns=[ana_loc])
         return((animal, ana_loc, pKs_matrix))
     else:
+        pKs_matrix = pd.DataFrame(result[0], columns=[ana_loc])
+        return((animal, ana_loc, pKs_matrix))
         print('###WORK IT OUT')
 
 
