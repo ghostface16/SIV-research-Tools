@@ -53,6 +53,8 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array, prop_to_
                                   ref_df_cols=ref_df_cols, nproc=nproc, count_ana_locs_1=count_ana_locs_1, w1=w1, w2=w2, 
                                   partition=partition, partition_2=partition_2, rand_cols=rand_cols, random_df=random_df, 
                                   pairwise_ks_matrix=pairwise_ks_matrix, count_ana_locs=count_ana_locs)
+        if pairwise:
+            count_ana_locs+=1
 
     if compute_random_Ks:
         #pKs_matrix = result[0]

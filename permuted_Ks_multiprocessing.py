@@ -86,6 +86,10 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
                     partition_2, compute_random_Ks)      
             
             permutation_body_args.append(args)  
+            
+            if pairwise:
+                count_ana_locs_1+=1
+                size_loop-=1
 
         final_results_1 = [pool.submit(permutation_body, *arg) for arg in permutation_body_args]
         final_results = [result.result()[2] for result in final_results_1]
