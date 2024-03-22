@@ -2,7 +2,7 @@ from math import floor, log
 import pandas as pd
 import numpy as np
 
-def pKaplan_distance(compartment_df):
+def pKaplan_distance(compartment_df:pd.DataFrame):
 
     count, previous = 0, 0
     compartment_df_cols = compartment_df.columns
