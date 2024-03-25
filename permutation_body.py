@@ -34,6 +34,7 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array:dict, pro
         count_ana_locs = None
     else:
         count_ana_locs = dim - size_loop  #####!!!!!######!!!!!!!*****
+        result = None
 
     for i in range(size_loop):
         if pairwise:
@@ -55,6 +56,9 @@ def permutation_body(labels_unique, df_w_lab:pd.DataFrame, nsamp_array:dict, pro
                                   pairwise_ks_matrix=pairwise_ks_matrix, count_ana_locs=count_ana_locs)
         if pairwise:
             count_ana_locs+=1
+
+    while not result:
+        pass
 
     if compute_random_Ks:
         #pKs_matrix = result[0]
