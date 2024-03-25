@@ -9,7 +9,7 @@ from statsmodels.stats.multitest import fdrcorrection
 
 def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random_Ks:bool, csv_dump:bool, 
                     grouping_index:int, sep:str, size_Ki_samp=100, n_permut=1000, prop_to_permut=0.2, 
-                    csv_path=None):
+                    csv_path=None, extension=None):
 
     results = permuted_Ks_multiprocessing(df=df, pairwise=pairwise, compute_random_Ks=compute_random_Ks, 
                         size_Ki_samp=size_Ki_samp,  n_permut=n_permut, prop_to_permut=prop_to_permut, 
@@ -20,11 +20,16 @@ def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random
             csv_path = os.getcwd()
 
         ident = results[-1]
+        
+        if extension:
+            ident = ident + extension
+
         ks_name = ident + '_Ks.csv'
         ks_path = os.path.join(csv_path, ks_name)
         pks_name = ident + '_pKs.csv'
         pks_path = os.path.join(csv_path, pks_name)
         Ks_df = results[0]
+        
         if pairwise:
             pKs_df = results[1]
         else:
