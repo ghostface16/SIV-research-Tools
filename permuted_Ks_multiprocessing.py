@@ -97,7 +97,9 @@ def permuted_Ks_multiprocessing(df:pd.DataFrame, nrep_par:int, pairwise:bool, co
         
      #STILL NEED TO WORKOUT THE PAIRWISE result       
     if pairwise:
-        return(Ks_stat_results[0], pairwise_ks_matrix, Ks_stat_results[-2])
+        pairwise_ks_matrix = pd.concat(final_results, axis=1)
+        ident = [result.result()[0] for result in final_results_1][0]
+        return(Ks_stat_results[0], pairwise_ks_matrix, Ks_stat_results[-2], ident)
     if compute_random_Ks:
         #result_list = {i[1]:i[2] for i in final_results}
         pKs_matrix = pd.concat(final_results, axis=1)

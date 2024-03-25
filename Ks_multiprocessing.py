@@ -25,7 +25,11 @@ def run_Kstar_perm(df:pd.DataFrame,  nrep_par:int, pairwise:bool, compute_random
         pks_name = ident + '_pKs.csv'
         pks_path = os.path.join(csv_path, pks_name)
         Ks_df = results[0]
-        pKs_df = results[2]
+        if pairwise:
+            pKs_df = results[1]
+        else:
+            pKs_df = results[2]
+
         pKs_df.to_csv(f'{pks_path}')
         Ks_df.to_csv(f'{ks_path}')
 
